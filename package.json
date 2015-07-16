@@ -1,0 +1,32 @@
+{
+  "name": "chat_redis",
+  "version": "1.0.0",
+  "description": "Chat in hapi.js & socket.io & redis",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/heron2014/chat_redis.git"
+  },
+  "keywords": [
+    "chat",
+    "redis",
+    "hapi.js",
+    "socket.io"
+  ],
+  "author": "heron2014",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/heron2014/chat_redis/issues"
+  },
+  "dependencies": {
+    "hapi": "~8.8.0",
+    "redis": "~0.12.1",
+    "hiredis": "~0.4.0",
+    "socket.io": "~1.3.6",
+    "socket.io-client": "~1.3.6",
+    "handlebars": "~3.0.3"
+  }
+}
