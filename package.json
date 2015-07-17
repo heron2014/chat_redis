@@ -2,7 +2,7 @@
   "name": "chat_redis",
   "version": "1.0.0",
   "description": "Chat in hapi.js & socket.io & redis",
-  "main": "app/server.js",
+  "main": "api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,5 +28,8 @@
     "socket.io": "~1.3.6",
     "socket.io-client": "~1.3.6",
     "handlebars": "~3.0.3"
+  },
+  "scripts": {
+
   }
 }
