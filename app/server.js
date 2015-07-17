@@ -1,8 +1,8 @@
-var hapi = require('hapi'),
-  server = new hapi.Server(),
+var Hapi = require('hapi'),
+  server = new Hapi.Server(),
   path = require('path'),
   handlebars = require('handlebars'),
-  routes = require('./backend/routes.js');
+  routes = require('./routes.js');
 
 server.connection({
   port: process.env.PORT || 8000
@@ -12,7 +12,7 @@ server.views({
   engines: {
     html: handlebars
   },
-  path: path.join(__dirname, '/public/templates')
+  path: path.join(__dirname,'../public/views')
 });
 
 server.route(routes);

@@ -2,7 +2,7 @@
   "name": "chat_redis",
   "version": "1.0.0",
   "description": "Chat in hapi.js & socket.io & redis",
-  "main": "server.js",
+  "main": "app/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

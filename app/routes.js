@@ -4,7 +4,9 @@ var routes = [
   {
     method: 'GET',
     path: '/',
-    handler: handlers.home
+    config: {
+          handler: handlers.home
+        }
   },
 
   {
@@ -12,7 +14,7 @@ var routes = [
     path: '/public/{path*}',
     handler: {
       directory: {
-        path: '../public'
+        path: './public'
       }
     }
   }
