@@ -4,7 +4,7 @@ var Hapi = require('hapi'),
   handlebars = require('handlebars'),
   routes = require('./routes.js'),
   SocketIO = require('socket.io'),
-  redisClient = require('./redis_connect.js');
+  redisClient = require('./api_redis/redis_connect.js');
 
 server.connection({
   port: process.env.PORT || 8000

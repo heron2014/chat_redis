@@ -1,4 +1,4 @@
-var redisClient = require('./redis_connect.js');
+var redisClient = require('./api_redis/redis_connect.js');
 
 var handlers = {
 
