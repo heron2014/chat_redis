@@ -57,3 +57,7 @@ form button {
 #messages li:nth-child(odd) { 
   background: #eee; 
 }
+#joiners {  height: 2em; color: black; padding: 1em;}
+#joined  { color: green; }
+.time { color: black; }
+.name { color: blue; }

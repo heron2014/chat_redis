@@ -4,15 +4,7 @@ var Hapi = require('hapi'),
   handlebars = require('handlebars'),
   routes = require('./routes.js'),
   SocketIO = require('socket.io'),
-  redis = require('redis'),
-  redis_client = require('./redis_connect.js');
-
-
-// redis_client.set('Redis-Status', 'Working');
-// redis_client.get('Redis-Status', function(err, reply) {
-//   console.log('Redis-Status: ' + reply);
-// });  
-  
+  redisClient = require('./redis_connect.js');
 
 server.connection({
   port: process.env.PORT || 8000
@@ -34,18 +26,34 @@ server.start(function() {
     console.log('this is client.conn.id ' + socket.client.conn.id);
     socket.emit('Oh hii!');
 
-    socket.on('message', function (message) {
-        console.log('Message from client on server side ' + message);
+    socket.on('name', function(name) {
+      redisClient.HSET('users', socket.client.conn.id, name);
+        console.log(socket.client.conn.id, name + 'joined');
+        io.emit('name', name);
+    });
+
+    socket.on('message', function (message, etc) {
+      console.log('Message from client on server side ' + message);
+
+      redisClient.HGET('users', socket.client.conn.id, function(err, name) {
+        if(err) {
+          console.log(err);
+        }
+
+        console.log(name);
 
         var obj = { //each message is stored in an object
           msg: message,
           timestamp: new Date().getTime(),
-          u: socket.client.conn.id
+          name: name
         };
-        redis_client.RPUSH('chat', JSON.stringify(obj));
-        console.log('after obj redis message is ' + message);
 
-        io.emit('message', message);
+        var strObj = JSON.stringify(obj);
+        redisClient.RPUSH('chat', strObj);
+        console.log(strObj);
+
+        io.emit('message', strObj); 
+      });
     });
   });
 

@@ -6,7 +6,7 @@ redisClient.auth(redisURL.auth.split(":")[1]);
 
 redisClient.set('Redis-Status', 'Working');
 redisClient.get('Redis-Status', function(err, reply) {
-  console.log('Redis-Status: ' + reply);
+  console.log('Redis-Status: ' + reply.toString());
 });  
 
 module.exports = redisClient;

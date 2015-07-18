@@ -11,6 +11,14 @@ var routes = [
 
   {
     method: 'GET',
+    path: '/load',
+    config: {
+      handler: handlers.loadAllMessages
+    }
+  },
+
+  {
+    method: 'GET',
     path: '/public/{path*}',
     handler: {
       directory: {
