@@ -5,8 +5,8 @@ var routes = [
     method: 'GET',
     path: '/',
     config: {
-          handler: handlers.home
-        }
+      handler: handlers.home
+    }
   },
 
   {

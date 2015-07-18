@@ -30,7 +30,7 @@ server.start(function() {
         console.log('Message from client on server side ' + message)
         io.emit('message', message);
     });
-});
+  });
 
   server.log('Server running at: ' + server.info.uri);
 });

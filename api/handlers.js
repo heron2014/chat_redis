@@ -5,10 +5,6 @@ var handlers = {
     	message: 'anita' //for now hardcoded
     }
     reply.view('index', context);
-  },
-
-  socket: function(request, reply) {
-  	reply.file('./node_modules/socket.io-client/socket.io.js');
   }
 };
 
