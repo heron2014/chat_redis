@@ -2,6 +2,14 @@
 (function() {
   console.log('testing');
   var socket = io();
+
+  function getName() {
+    var name = window.prompt("What's your name? ");
+    console.log(name);
+    socket.emit('name', name);
+    return name;
+  }
+
   $('form').submit(function() {
     var m = $('#m'),
       msg = m.val();

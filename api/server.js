@@ -3,7 +3,15 @@ var Hapi = require('hapi'),
   path = require('path'),
   handlebars = require('handlebars'),
   routes = require('./routes.js'),
-  SocketIO = require('socket.io');
+  SocketIO = require('socket.io'),
+  redis = require('redis'),
+  redis_client = require('./redis_connect.js');
+
+
+// redis_client.set('Redis-Status', 'Working');
+// redis_client.get('Redis-Status', function(err, reply) {
+//   console.log('Redis-Status: ' + reply);
+// });  
   
 
 server.connection({
@@ -27,7 +35,16 @@ server.start(function() {
     socket.emit('Oh hii!');
 
     socket.on('message', function (message) {
-        console.log('Message from client on server side ' + message)
+        console.log('Message from client on server side ' + message);
+
+        var obj = { //each message is stored in an object
+          msg: message,
+          timestamp: new Date().getTime(),
+          u: socket.client.conn.id
+        };
+        redis_client.RPUSH('chat', JSON.stringify(obj));
+        console.log('after obj redis message is ' + message);
+
         io.emit('message', message);
     });
   });
